@@ -1,0 +1,28 @@
+/* Móvil minimalista para las páginas de firma: más aire a los lados, fotos contenidas y letra más pequeña.
+   Solo actúa en pantallas estrechas; el ordenador no cambia. */
+@media (max-width: 640px) {
+  .ancho { padding-left: 26px !important; padding-right: 26px !important; }
+  body { font-size: 14.5px; }
+  main section:not(:first-of-type) { padding-top: 64px; padding-bottom: 64px; }
+  main h2 { font-size: clamp(19px, 5.6vw, 23px) !important; letter-spacing: .1em !important; line-height: 1.25 !important; }
+  main h3 { font-size: 15px !important; }
+  main p { font-size: 14px; }
+  .peq { font-size: 10px !important; }
+  .cab-sec, .cab { margin-bottom: 26px !important; gap: 10px !important; }
+  .cab-sec p, .cab p { font-size: 13.5px !important; }
+
+  /* Fotos: nunca más de la mitad de la pantalla, y con margen a los lados */
+  main section:not(:first-of-type) :is(figure, .foto, .pano, .uso, .material, .amb, .render, .alzado, .mat, .coleccion, .sistema, .hito, .cocina, .serie, .bento > *, .celda, .tarjeta, .card) img { max-height: 46svh; object-fit: cover; }
+  main section:not(:first-of-type) :is(figure, .foto, .pano, .uso, .material, .amb, .render) { max-height: 46svh; }
+  main section:not(:first-of-type) > img, main section:not(:first-of-type) .ancho > img { max-height: 46svh; object-fit: cover; }
+  main section:not(:first-of-type) :is(.partida a, .ambientes .amb, .perfil) { min-height: 0 !important; height: 46svh !important; }
+
+  /* Rejillas de muestras y colores: más pequeñas */
+  main :is(.chips, .muestras, .colores, .vidrios) { gap: 8px !important; }
+
+  /* Pie y cierre */
+  .cierre { padding-top: 72px !important; padding-bottom: 64px !important; }
+  .cierre h2 { margin-bottom: 14px !important; }
+  .otras { margin-top: 56px !important; gap: 20px 28px !important; }
+  footer .ancho { font-size: 11px; gap: 6px !important; }
+}
