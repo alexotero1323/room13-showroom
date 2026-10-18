@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/favicon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firma · Room 13 Showroom</title>
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Poppins:wght@600&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo:#0e0e0e; --fondo-2:#171717; --fondo-3:#202020; --texto:#efe6da; --suave:#a8978a; --linea:#2a2a2a; --acento:#c9a57e;
+    --display:Cinzel, 'Trajan Pro', Georgia, serif; --sans:'Hanken Grotesk', system-ui, sans-serif;
+    --r:22px; --r-s:14px;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--fondo); color:var(--texto); font:300 16px/1.7 var(--sans); -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .ancho { max-width:1280px; margin:0 auto; padding:0 28px; }
+  .estrecho { max-width:760px; }
+  @media (max-width:640px) { .ancho { padding:0 16px; } }
+  .peq { font:400 11px/1.5 var(--sans); letter-spacing:.2em; text-transform:uppercase; color:var(--acento); }
+  h1, h2 { font-family:var(--display); font-weight:400; text-transform:uppercase; letter-spacing:.12em; line-height:1.2; }
+  .pildora { display:inline-flex; align-items:center; gap:10px; font:400 13px var(--sans); padding:11px 20px; border:1px solid var(--suave); border-radius:999px; transition:background .3s, color .3s, border-color .3s; }
+  .pildora:hover { background:var(--texto); color:var(--fondo); border-color:var(--texto); }
+  .pildora.llena { background:var(--texto); color:var(--fondo); border-color:var(--texto); }
+  .pildora.llena:hover { background:transparent; color:var(--texto); }
+
+  header { padding:18px 0; border-bottom:1px solid var(--linea); }
+  header .ancho { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .marca { font:400 19px/1 var(--display); letter-spacing:.14em; }
+
+  .volver { display:inline-block; margin:70px 0 60px; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--suave); }
+  .volver:hover { color:var(--texto); }
+  .nombre { margin:22px 0 26px; }
+  /* Logo de la firma: misma caja que en la página de Laminam */
+  .logo-firma { height:calc(64px * var(--e, 1)); width:auto; max-width:min(440px, 80vw); object-fit:contain; filter:brightness(0) invert(.92) sepia(.12); display:block; }
+  .logo-texto { font:600 clamp(36px, 5vw, 56px)/1 Poppins, var(--sans); letter-spacing:-.01em; }
+  .logo-texto sup { font-size:.4em; vertical-align:top; }
+  @media (max-width:640px) { .logo-firma { height:calc(42px * var(--e, 1)); } }
+  .lead { font-size:clamp(17px, 1.6vw, 20px); color:var(--suave); max-width:640px; }
+  .foto { margin:56px 0 0; aspect-ratio:16/8; border-radius:var(--r); }
+  @media (max-width:640px) { .foto { aspect-ratio:4/3; } }
+
+  section { padding:110px 0; }
+  section h2 { font-size:clamp(24px, 3vw, 38px); margin:14px 0 26px; }
+  section p + p { margin-top:16px; }
+  .banda { background:var(--fondo-2); }
+  ul.lista { list-style:none; }
+  ul.lista li { padding:12px 0; border-bottom:1px solid var(--linea); display:flex; gap:14px; }
+  ul.lista li::before { content:"—"; color:var(--acento); }
+  .pendiente { color:var(--suave); font-style:italic; }
+
+  .otras { border-top:1px solid var(--linea); padding:70px 0; }
+  .otras .fila { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .otras a { font:500 12px var(--sans); letter-spacing:.16em; text-transform:uppercase; padding:10px 16px; border:1px solid var(--linea); border-radius:999px; transition:border-color .3s; }
+  .otras a:hover { border-color:var(--suave); }
+  footer { padding:40px 0; border-top:1px solid var(--linea); font-size:12px; color:var(--suave); }
+
+  /* Materiales (en lugar de fotos hasta tener las de las firmas) */
+  .nogal { background:repeating-linear-gradient(92deg, #3b2a1f 0 3px, #46321f 3px 7px, #352519 7px 9px); }
+  .roble { background:repeating-linear-gradient(90deg, #a98a63 0 4px, #b5966c 4px 9px, #9e7f58 9px 11px); }
+  .marmol { background:linear-gradient(118deg, transparent 46%, rgba(255,255,255,.6) 47%, transparent 49%), linear-gradient(40deg, transparent 60%, rgba(255,255,255,.35) 61%, transparent 62%), #2b211a; }
+  .calacata { background:linear-gradient(130deg, transparent 40%, #b9b2a8 41%, transparent 43%), linear-gradient(20deg, transparent 70%, #cfc8be 71%, transparent 72%), #e9e5df; }
+  .micro { background:radial-gradient(circle at 20% 30%, rgba(255,255,255,.1), transparent 45%), radial-gradient(circle at 80% 70%, rgba(0,0,0,.18), transparent 45%), #8a8780; }
+  .granito { background:radial-gradient(#5d5a57 15%, transparent 16%) 0 0/7px 7px, radial-gradient(#1c1b1a 15%, transparent 16%) 3px 4px/7px 7px, #393634; }
+  .arena { background:#cdbfa8; } .carbon { background:#2e231b; }
+
+  /* Logo Room 13 · Showroom (mismo diseño que el rótulo) */
+  .logo-r13 { display:block; height:42px; width:auto; }
+  @media (max-width:640px) { .logo-r13 { height:34px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html" aria-label="Room 13, inicio"><img src="img/marca/logo-peq.svg" alt="Room 13 Showroom" class="logo-r13"></a>
+    <a class="pildora" href="index.html#visita">Reserva tu visita</a>
+  </div>
+</header>
+
+<main>
+  <div class="ancho">
+    <a class="volver" href="index.html#firmas">← Volver a las firmas</a>
+    <p class="peq" id="categoria"></p>
+    <h1 class="nombre" id="nombre"></h1>
+    <p class="lead" id="lead"></p>
+    <div class="foto" id="foto" role="img" aria-label="Foto de la firma pendiente"></div>
+  </div>
+
+  <section>
+    <div class="ancho estrecho">
+      <p class="peq">Quiénes son</p>
+      <h2>La firma</h2>
+      <p class="pendiente">[Historia de la firma: origen, fábrica y proyectos destacados. La aporta cada fabricante.]</p>
+    </div>
+  </section>
+
+  <section class="banda">
+    <div class="ancho estrecho">
+      <p class="peq">En Room 13</p>
+      <h2>Qué encuentras aquí</h2>
+      <p class="pendiente">[Qué piezas, acabados y muestras de esta firma hay expuestos en el showroom.]</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="ancho estrecho">
+      <p class="peq">Productos</p>
+      <h2>Lo que ofrecen</h2>
+      <ul class="lista pendiente"><li>[Producto o línea]</li><li>[Acabados y formatos]</li><li>[Especificaciones técnicas]</li></ul>
+      <p style="margin-top:44px"><a class="pildora llena" id="cta" href="index.html#visita">Reserva tu visita</a></p>
+    </div>
+  </section>
+
+  <div class="otras">
+    <div class="ancho">
+      <p class="peq">Otras firmas en Room 13</p>
+      <div class="fila" id="otras"></div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="ancho">Room 13 · Showroom de firmas y materiales para profesionales · Bilbao</div></footer>
+
+<script>
+  // ponytail: una sola página para todas las firmas; pasar a una página por firma al publicar (mejor para Google)
+  const FIRMAS = {
+    'laminam': { nombre:'Laminam', categoria:'Gran formato', material:'calacata', logo:'svg', e:1 },
+    'novacucina': { nombre:'Novacucina', categoria:'Cocinas', material:'nogal', logo:'svg', e:0.85 },
+    'linea-013': { nombre:'Línea 013', categoria:'Puertas y cerramientos', material:'carbon', logo:'svg', e:2.2 },
+    'boksen': { nombre:'Boksen', categoria:'Armarios y vestidores', material:'roble', logo:'svg', e:0.85 },
+    'barazza': { nombre:'Barazza', categoria:'Equipamiento de cocina', material:'marmol', logo:'svg', e:1 },
+    'grato': { nombre:'Grato', categoria:'Suelos de madera', material:'roble', logo:'svg', e:0.72 },
+    'microquarz': { nombre:'MicroQuarz', categoria:'Revestimiento continuo', material:'micro', logo:'', e:1 },
+    'vema': { nombre:'Vema', categoria:'Grifería', material:'arena', logo:'png', e:1 },
+    'bora': { nombre:'Bora', categoria:'Placas con extracción', material:'carbon', logo:'svg', e:0.72 },
+    'loyra': { nombre:'Loyra', categoria:'Mobiliario', material:'nogal', logo:'svg', e:1 },
+    'sofactual': { nombre:'Sofactual', categoria:'Sofás', material:'arena', logo:'png', e:1.05 },
+    'megius': { nombre:'Megius', categoria:'Mamparas de ducha', material:'marmol', logo:'png', e:1.1 },
+  };
+  const clave = new URLSearchParams(location.search).get('f');
+  const PROPIAS = { 'boksen':'boksen.html', 'megius':'megius.html', 'bora':'bora.html', 'barazza':'barazza.html', 'microquarz':'microquarz.html', 'sofactual':'sofactual.html', 'vema':'vema.html', 'grato':'grato.html', 'loyra':'loyra.html', laminam:'laminam.html', novacucina:'novacucina.html', 'linea-013':'linea013.html' };
+  if (PROPIAS[clave]) location.replace(PROPIAS[clave]);
+  const f = FIRMAS[clave];
+  if (!f) location.replace('index.html#firmas');
+  else {
+    document.title = `${f.nombre} · Room 13`;
+    document.getElementById('categoria').textContent = f.categoria;
+    document.getElementById('nombre').innerHTML = f.logo
+      ? `<img class="logo-firma" src="img/firmas/${clave}.${f.logo}" alt="${f.nombre}" style="--e:${f.e}">`
+      : `<span class="logo-texto">${f.nombre}<sup>®</sup></span>`;
+    document.getElementById('lead').textContent = f.categoria === 'Por confirmar' ? '[Descripción breve de la firma, por confirmar.]' : `${f.categoria} de ${f.nombre}, para verlo y compararlo en Room 13 con tu cliente.`;
+    document.getElementById('foto').className = 'foto ' + f.material;
+    document.getElementById('cta').textContent = `Ver ${f.nombre} en Room 13`;
+    document.getElementById('otras').innerHTML = Object.entries(FIRMAS).filter(([k]) => k !== clave)
+      .map(([k, o]) => `<a href="${PROPIAS[k] || 'firma.html?f=' + k}">${o.nombre}</a>`).join('');
+  }
+</script>
+</body>
+</html>

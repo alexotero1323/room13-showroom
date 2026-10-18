@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /firma.html
+
+Sitemap: https://room13.es/sitemap.xml
