@@ -444,6 +444,82 @@
   .logo-r13 { display:block; height:42px; width:auto; }
   @media (max-width:640px) { .logo-r13 { height:34px; } }
   .sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+  /* ===== Menú hamburguesa (móvil) ===== */
+  .hamb { display:none; width:40px; height:40px; border:1px solid rgba(239,230,218,.3); border-radius:50%; background:none; cursor:pointer; position:relative; justify-self:end; }
+  .hamb i { position:absolute; left:12px; right:12px; height:1px; background:var(--texto); transition:transform .4s, opacity .3s, top .4s; }
+  .hamb i:nth-child(1) { top:15px; } .hamb i:nth-child(2) { top:19.5px; } .hamb i:nth-child(3) { top:24px; }
+  .menu-abierto .hamb i:nth-child(1) { top:19.5px; transform:rotate(45deg); } .menu-abierto .hamb i:nth-child(2) { opacity:0; } .menu-abierto .hamb i:nth-child(3) { top:19.5px; transform:rotate(-45deg); }
+  .panel-menu { position:fixed; inset:0; z-index:19; background:rgba(14,14,14,.97); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); display:flex; flex-direction:column; justify-content:center; padding:90px 34px 40px; opacity:0; visibility:hidden; transition:opacity .45s, visibility 0s .45s; }
+  .menu-abierto .panel-menu { opacity:1; visibility:visible; transition:opacity .45s; }
+  .panel-menu a.item { display:flex; align-items:baseline; gap:16px; padding:15px 0; border-bottom:1px solid var(--linea); font:400 21px/1.2 var(--display); letter-spacing:.12em; text-transform:uppercase; transform:translateY(14px); opacity:0; transition:transform .6s cubic-bezier(.2,.7,.2,1), opacity .6s; }
+  .panel-menu a.item span { font:400 11px var(--sans); color:var(--acento); letter-spacing:.16em; }
+  .menu-abierto .panel-menu a.item { transform:none; opacity:1; }
+  .menu-abierto .panel-menu a.item:nth-child(2) { transition-delay:.05s } .menu-abierto .panel-menu a.item:nth-child(3) { transition-delay:.1s } .menu-abierto .panel-menu a.item:nth-child(4) { transition-delay:.15s } .menu-abierto .panel-menu a.item:nth-child(5) { transition-delay:.2s } .menu-abierto .panel-menu a.item:nth-child(6) { transition-delay:.25s }
+  .panel-menu .pie-menu { margin-top:34px; font-size:13px; color:var(--suave); line-height:1.9; }
+  .panel-menu .pie-menu a { color:var(--texto); }
+
+  /* ===== Móvil v2: como el ordenador, en pequeño y cuadrado ===== */
+  @media (max-width:760px) {
+    header .ancho { grid-template-columns:1fr auto auto !important; gap:10px; }
+    header .pildora { padding:9px 14px; font-size:12px; }
+    .hamb { display:block; }
+    .marca-peq { justify-self:start !important; }
+    .portada .menu { display:none !important; }
+    .portada { min-height:88svh; }
+
+    .que-es { height:150vh; }
+    .centrado .frase { font-size:16px !important; }
+
+    /* Firmas: 3 columnas, como el escritorio pero más pequeño */
+    .firmas { grid-template-columns:repeat(3, minmax(0,1fr)) !important; gap:6px !important; }
+    .firma { aspect-ratio:1 !important; padding:8px !important; gap:8px !important; border-radius:10px; }
+    .firma .logo { height:calc(20px * var(--e, 1)) !important; width:82%; }
+    .firma .logo-texto { font-size:12px !important; }
+    .firma .peq { font-size:7px !important; letter-spacing:.1em !important; line-height:1.3; }
+
+    /* Para quién: fotos más bajas */
+    .escena .foto { aspect-ratio:16/10 !important; }
+    .escena .info { padding:2px 0 26px !important; }
+    .escena .info p.lema { font-size:15px !important; }
+    .escena .info li { font-size:13px !important; padding:7px 0 !important; }
+
+    /* Tu proyecto: composición más pequeña y lista alineada */
+    .mesa { width:min(76vw, 300px) !important; }
+    .cliente ul { max-width:320px; margin:22px auto 26px !important; }
+    .cliente li { justify-content:flex-start !important; text-align:left !important; gap:14px !important; font-size:13.5px !important; padding:10px 0 !important; }
+    .cliente li span { flex:none; min-width:22px; }
+    .leyenda-mesa { font-size:10.5px !important; max-width:320px; margin:12px auto 0 !important; }
+
+    /* Reserva: más corta */
+    .visita .lado { padding:30px 22px 24px !important; }
+    .visita .lado > p { font-size:13.5px !important; }
+    .datos { padding-top:18px !important; }
+    .datos div { padding:9px 0 !important; font-size:12.5px !important; }
+    .visita form { padding:26px 22px 28px !important; grid-template-columns:1fr 1fr !important; gap:16px 14px !important; }
+    .visita form .campo:nth-child(-n+4) input { font-size:14px; }
+    .campo > span, .bloque-op legend { font-size:9px !important; letter-spacing:.18em !important; }
+    .bloque-op, .campo.entera, .pie-form, #respuesta { grid-column:1/-1 !important; }
+    .chips { gap:6px !important; justify-content:flex-start !important; }
+    .bloque-op { text-align:left !important; }
+    .chip span { font-size:11.5px !important; padding:7px 11px !important; gap:6px !important; }
+    .campo textarea { min-height:56px !important; }
+    .pie-form { flex-direction:column; align-items:stretch !important; gap:14px !important; }
+    .enviar { justify-content:center; }
+
+    /* Pie: cuadrado, alineado a la izquierda */
+    footer .guias { display:none; }
+    footer .cols { grid-template-columns:1fr 1fr !important; gap:30px 18px !important; text-align:left; }
+    footer .cols > div { text-align:left !important; }
+    footer .cols a, footer .cols span, footer .desc-pie { margin:0 !important; }
+    footer .cols > div:nth-child(3) { grid-column:1/-1; }
+    footer .cols > div:nth-child(4) { grid-column:1/-1; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0 14px; }
+    footer .cols > div:nth-child(4) h4, footer .cols > div:nth-child(4) .cita-pie { grid-column:1/-1; }
+    footer .dato-pie dd a, footer .dato-pie dd span { font-size:12px !important; }
+    footer .cols .firmas-pie { columns:3 !important; max-width:none !important; margin:0 !important; }
+    footer .contacto { margin-bottom:46px !important; }
+    footer .legal { align-items:flex-start !important; text-align:left !important; padding:18px 0 !important; }
+  }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Room 13 es una tienda abierta al público?", "acceptedAnswer": {"@type": "Answer", "text": "No. Room 13 es un showroom solo para profesionales: interioristas, arquitectos, decoradores y empresas de reforma. Si eres particular, tu interiorista o arquitecto puede venir contigo."}}, {"@type": "Question", "name": "¿Comprar a través de Room 13 encarece el producto?", "acceptedAnswer": {"@type": "Answer", "text": "No. Trabajamos como extensión comercial de las fábricas, así que venir a Room 13 no encarece el producto, y cada presupuesto lleva condiciones profesionales."}}, {"@type": "Question", "name": "¿Puedo venir con mi cliente?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Puedes venir solo o con tu cliente, elegir acabados con la muestra real delante y presentar el proyecto en nuestra sala, con mesa y pantalla grande."}}, {"@type": "Question", "name": "¿Qué firmas y materiales hay en el showroom?", "acceptedAnswer": {"@type": "Answer", "text": "Laminam, Novacucina, Línea 013, Boksen, Barazza, Grato, MicroQuarz, Vema, Bora, Loyra, Sofactual y Megius, además de piedra natural de todo tipo. Si algo no está en la exposición, lo buscamos o estudiamos cómo hacerlo a medida."}}, {"@type": "Question", "name": "¿Hacéis medición y montaje?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Muchos de nuestros clientes no tienen equipo propio de obra, así que ofrecemos el servicio completo de todos nuestros productos: medición, suministro y montaje con nuestros equipos. Así respondemos del resultado de principio a fin. Si prefieres usar tus propios gremios, también puedes."}}, {"@type": "Question", "name": "¿Trabajáis fachadas ventiladas?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, llave en mano. Puedes elegir cualquier material para la fachada y nos encargamos de todo el servicio: definimos el sistema, resolvemos el detalle técnico y hacemos la medición, el suministro y la colocación con nuestros equipos."}}]}</script>
 </head>
@@ -464,8 +540,18 @@
     </nav>
     <a class="marca-peq" href="#" aria-label="Room 13, inicio"><img src="img/marca/logo-peq.svg" alt="Room 13 Showroom" class="logo-r13"></a>
     <a class="pildora" href="#visita">Reserva tu visita</a>
+    <button class="hamb" id="hamb" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="panel-menu"><i></i><i></i><i></i></button>
   </div>
 </header>
+<nav class="panel-menu" id="panel-menu" aria-label="Menú">
+  <a class="item" href="#firmas"><span>01</span>Firmas</a>
+  <a class="item" href="#showroom"><span>02</span>El showroom</a>
+  <a class="item" href="#cliente"><span>03</span>Proyectos</a>
+  <a class="item" href="#fachadas"><span>04</span>Arquitectura</a>
+  <a class="item" href="#preguntas"><span>05</span>Preguntas</a>
+  <a class="item" href="#visita"><span>06</span>Reserva tu visita</a>
+  <div class="pie-menu">Avenida Zarandoa, 11 B · Bilbao<br><a href="tel:+34688692061">688 692 061</a> · <a href="tel:+34652774137">652 774 137</a></div>
+</nav>
 
 <main>
 <section class="portada" id="inicio">
@@ -757,6 +843,15 @@
     addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(() => { mover(); pend = false; }); } }, { passive: true });
     mover();
   })();
+  // Menú hamburguesa (móvil)
+  (() => {
+    const b = document.getElementById('hamb'), panel = document.getElementById('panel-menu'), raiz = document.documentElement;
+    const poner = abierto => { raiz.classList.toggle('menu-abierto', abierto); b.setAttribute('aria-expanded', abierto); b.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú'); document.body.style.overflow = abierto ? 'hidden' : ''; };
+    b.addEventListener('click', () => poner(!raiz.classList.contains('menu-abierto')));
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => poner(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape') poner(false); });
+  })();
+
   const cab = document.getElementById('cabecera');
   addEventListener('scroll', () => cab.classList.toggle('solida', scrollY > innerHeight * .6), { passive: true });
   const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visto'); obs.unobserve(e.target); } }), { threshold: .12 });
