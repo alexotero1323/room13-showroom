@@ -224,7 +224,6 @@
   .composicion { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; filter:drop-shadow(-18px 30px 40px rgba(0,0,0,.6));
     opacity:calc(.15 + var(--a) * .85); transform:translateY(calc((1 - var(--a)) * 60px)) scale(calc(.94 + var(--a) * .06)) rotate(calc((1 - var(--a)) * -2deg));
     clip-path:inset(calc((1 - var(--a)) * 30%) 0 0 0); }
-  .mesa::before { content:""; position:absolute; inset:-8%; pointer-events:none; background:radial-gradient(ellipse 60% 50% at 55% 42%, rgba(239,230,218,.06), transparent 70%); }
   .pieza { position:absolute; background-size:cover; background-position:center; will-change:transform, opacity; transition:filter .4s;
     box-shadow:0 1px 0 rgba(255,255,255,.14) inset, 0 2px 0 rgba(0,0,0,.6), -14px 24px 34px -8px rgba(0,0,0,.75), -3px 6px 12px rgba(0,0,0,.55); }
   /* Grano y luz sobre cada muestra: la luz entra por arriba a la derecha */
@@ -519,6 +518,31 @@
     footer .cols .firmas-pie { columns:3 !important; max-width:none !important; margin:0 !important; }
     footer .contacto { margin-bottom:46px !important; }
     footer .legal { align-items:flex-start !important; text-align:left !important; padding:18px 0 !important; }
+  }
+
+  /* ===== Móvil v3: lista recta, etiquetas con flecha, pie con líneas ===== */
+  @media (max-width:760px) {
+    .showroom .lista { width:250px !important; max-width:250px !important; margin:0 auto; justify-self:center; }
+    .showroom .lista li { justify-content:flex-start !important; text-align:left !important; transform:none !important; }
+    .showroom .lista li span { min-width:26px; }
+
+    .rotulo { display:flex !important; font-size:6.8px !important; letter-spacing:.08em !important; gap:4px !important; }
+    .rotulo > span { padding:3px 5px 2px !important; }
+    .rotulo small { display:block !important; font-size:5.8px !important; letter-spacing:.08em !important; }
+    .rotulo u { width:12px !important; }
+    .rotulo i { width:4px !important; height:4px !important; }
+    .leyenda-mesa { display:none !important; }
+    .mesa { width:min(82vw, 330px) !important; }
+
+    footer .guias { display:grid !important; grid-template-columns:1fr 1fr !important; padding:0 26px !important; }
+    footer .guias i:nth-child(n+3) { display:none !important; }
+    footer .guias i:nth-child(2) { border-right:1px solid rgba(201,165,126,.1); }
+    footer .cols { grid-template-columns:1fr 1fr !important; gap:34px 0 !important; }
+    footer .cols > div { padding:0 14px !important; }
+    footer .cols > div:nth-child(3) .firmas-pie { columns:2 !important; column-gap:28px !important; }
+    footer .cols > div:nth-child(4) { grid-template-columns:1fr 1fr !important; gap:0 28px !important; }
+    footer .cols > div:nth-child(4) .cita-pie { grid-column:2 !important; justify-self:start; margin-top:0 !important; }
+    footer .legal { padding:18px 14px !important; }
   }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Room 13 es una tienda abierta al público?", "acceptedAnswer": {"@type": "Answer", "text": "No. Room 13 es un showroom solo para profesionales: interioristas, arquitectos, decoradores y empresas de reforma. Si eres particular, tu interiorista o arquitecto puede venir contigo."}}, {"@type": "Question", "name": "¿Comprar a través de Room 13 encarece el producto?", "acceptedAnswer": {"@type": "Answer", "text": "No. Trabajamos como extensión comercial de las fábricas, así que venir a Room 13 no encarece el producto, y cada presupuesto lleva condiciones profesionales."}}, {"@type": "Question", "name": "¿Puedo venir con mi cliente?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Puedes venir solo o con tu cliente, elegir acabados con la muestra real delante y presentar el proyecto en nuestra sala, con mesa y pantalla grande."}}, {"@type": "Question", "name": "¿Qué firmas y materiales hay en el showroom?", "acceptedAnswer": {"@type": "Answer", "text": "Laminam, Novacucina, Línea 013, Boksen, Barazza, Grato, MicroQuarz, Vema, Bora, Loyra, Sofactual y Megius, además de piedra natural de todo tipo. Si algo no está en la exposición, lo buscamos o estudiamos cómo hacerlo a medida."}}, {"@type": "Question", "name": "¿Hacéis medición y montaje?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Muchos de nuestros clientes no tienen equipo propio de obra, así que ofrecemos el servicio completo de todos nuestros productos: medición, suministro y montaje con nuestros equipos. Así respondemos del resultado de principio a fin. Si prefieres usar tus propios gremios, también puedes."}}, {"@type": "Question", "name": "¿Trabajáis fachadas ventiladas?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, llave en mano. Puedes elegir cualquier material para la fachada y nos encargamos de todo el servicio: definimos el sistema, resolvemos el detalle técnico y hacemos la medición, el suministro y la colocación con nuestros equipos."}}]}</script>

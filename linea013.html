@@ -172,6 +172,62 @@
   .logo-r13 { display:block; height:42px; width:auto; }
   @media (max-width:640px) { .logo-r13 { height:34px; } }
   .sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+  /* ===== Móvil: diseño propio ===== */
+  @media (max-width:760px) {
+    /* Portada: vídeo a pantalla completa, texto abajo */
+    .portada { height:100svh !important; }
+    .portada .fijo { position:relative; }
+    .marco { inset:0 !important; border:0 !important; }
+    .marco::after { opacity:1 !important; background:linear-gradient(0deg, rgba(10,10,10,.92) 0%, rgba(10,10,10,.35) 45%, rgba(10,10,10,.15) 70%, rgba(10,10,10,.5) 100%) !important; }
+    .bloque { top:auto !important; bottom:46px; left:26px !important; right:26px !important; text-align:left !important; opacity:1 !important; transform:none !important; }
+    .bloque .logo-firma { height:64px !important; margin:0 !important; }
+    .bloque h1 { margin:14px 0 12px !important; }
+    .bloque p:not(.peq) { font-size:13px !important; }
+    .leyenda { display:none; }
+
+    /* Frase */
+    .frase { padding:64px 0 40px !important; text-align:left; }
+    .frase p { font-size:16px !important; line-height:1.65 !important; margin-top:14px !important; }
+
+    /* Colección: carrusel que se pasa con el dedo */
+    .coleccion { padding:30px 0 64px !important; }
+    .panos { flex-direction:row !important; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px !important; height:auto !important; margin:0 -26px; padding:0 26px 6px; scrollbar-width:none; }
+    .panos::-webkit-scrollbar { display:none; }
+    .pano, .pano.abierto { flex:0 0 76% !important; aspect-ratio:3/4 !important; height:auto !important; scroll-snap-align:start; border-color:var(--linea) !important; }
+    .pano > img { filter:brightness(.82) !important; transform:none !important; }
+    .pano .nombre { display:none !important; }
+    .pano .ficha { opacity:1 !important; transform:none !important; position:absolute !important; flex-direction:column; align-items:flex-start !important; padding:18px !important; gap:0 !important; background:linear-gradient(0deg, rgba(10,10,10,.92), rgba(10,10,10,.4) 60%, transparent) !important; }
+    .ficha .alzado { display:none !important; }
+    .ficha b { font-size:18px !important; margin-bottom:6px !important; }
+    .ficha p { font-size:12.5px !important; line-height:1.5; }
+    .pano .num { top:14px; left:16px; }
+    .desliza { display:flex !important; }
+    .coleccion .cab-sec p { display:none; }
+
+    /* Aperturas: cada sistema en una fila, dibujo + texto */
+    .aperturas, .materiales { padding:64px 0 !important; }
+    .cuatro { grid-template-columns:1fr !important; gap:0 !important; }
+    .sistema { display:grid; grid-template-columns:104px 1fr; column-gap:18px; align-items:center; padding:14px 0; border-top:1px solid var(--linea); }
+    .sistema:last-child { border-bottom:1px solid var(--linea); }
+    .sistema figure { display:none; }
+    .sistema .plano { grid-row:1 / span 2; margin:0 !important; }
+    .sistema b { font-size:14px !important; align-self:end; }
+    .sistema p { font-size:12.5px !important; margin-top:2px !important; align-self:start; }
+
+    /* Materiales: carrusel */
+    .tres { display:flex !important; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px !important; margin:0 -26px; padding:0 26px 6px; scrollbar-width:none; }
+    .tres::-webkit-scrollbar { display:none; }
+    .mat { flex:0 0 70%; scroll-snap-align:start; }
+    .mat figure { aspect-ratio:4/5 !important; max-height:none !important; }
+    .mat b { font-size:13.5px !important; margin:12px 0 4px !important; }
+    .mat p { font-size:12.5px !important; }
+    .ficha-tec { margin-top:44px !important; gap:34px !important; }
+    .fila { padding:10px 0 !important; font-size:13px !important; }
+    .fila i { width:22px !important; height:22px !important; }
+  }
+  .desliza { display:none; align-items:center; gap:10px; margin-top:16px; font:400 10px var(--sans); letter-spacing:.24em; text-transform:uppercase; color:var(--suave); }
+  .desliza i { width:30px; height:1px; background:var(--acento); }
 </style>
 <link rel="stylesheet" href="css/movil-firmas.css">
 </head>
@@ -220,6 +276,7 @@
       <p>Pasa por cada paño para abrirlo: el ambiente, su alzado y su carácter.</p>
     </div>
     <div class="panos" id="panos"></div>
+    <p class="desliza" aria-hidden="true"><i></i>Desliza para ver los cinco modelos</p>
   </div>
 </section>
 
@@ -327,7 +384,7 @@
   const alBajar = () => {
     cab.classList.toggle('solida', scrollY > portada.offsetHeight - innerHeight);
     const movil = innerWidth <= 760;
-    const a = quieto ? 0 : entre(scrollY / (portada.offsetHeight - innerHeight));
+    const a = quieto || innerWidth <= 760 ? 0 : entre(scrollY / (portada.offsetHeight - innerHeight));
     const e = 1 - Math.pow(1 - a, 3);
     const x0 = movil ? 6 : 33, y10 = movil ? 42 : 17, y20 = movil ? 10 : 17;
     fijo.style.setProperty('--x', `${x0 * (1 - e)}%`);
